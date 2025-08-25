@@ -1,5 +1,12 @@
+//<> Imports
+
 import Header from './components/Header/header';
+import Pesquisa from './components/Pesquisa/pesquisa';
+import UltimosLancamentos from './components/UltimosLancamentos/ultimosLancamentos';
+
 import styled from 'styled-components';
+
+//<> Styled components
 
 const AppContainer = styled.div
 `
@@ -9,10 +16,14 @@ const AppContainer = styled.div
   margin: 0;
 `
 
+//<> Default function
+
 function App() {
   return (
     <AppContainer>
       <Header/>
+      <Pesquisa />
+      <UltimosLancamentos />
     </AppContainer>
   );
 }

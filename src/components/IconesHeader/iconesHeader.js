@@ -1,6 +1,10 @@
+//<> Imports
+
 import perfil from '../../imgs/perfil.svg';
 import sacola from '../../imgs/sacola.svg';
 import styled from 'styled-components';
+
+//<> Styled components
 
 const icones = [perfil, sacola]
 
@@ -8,17 +12,19 @@ const HeaderIcones = styled.div
 `
   display: flex;
   align-items: center;
+  text-align: center;
 `
 
 const Icone = styled.li
 `
-  margin-right: 40px;
-  width: 25px;
+  width: 50px;
 
   &:hover {
   cursor: pointer;
   }
 `
+
+//<> Default functions
 
 function IconesHeader() {
     return (

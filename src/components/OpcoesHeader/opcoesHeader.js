@@ -1,6 +1,12 @@
+//<> Imports
+
 import styled from 'styled-components';
 
+//<> Header Options array
+
 const textoOpcoes = ['CATEGORIAS', 'FAVORITOS', 'MINHA ESTANTE'];
+
+//<> Styled components
 
 const HeaderOpcoes = styled.ul
 `
@@ -10,9 +16,9 @@ const HeaderOpcoes = styled.ul
 const Opcao = styled.li
 `
   font-size: 1rem;
-  min-width: 120px;
+  min-width: 200px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
 
@@ -20,6 +26,8 @@ const Opcao = styled.li
     cursor: pointer;
   }
 `
+
+//<> Default function
 
 function OpcoesHeader() {
     return (
