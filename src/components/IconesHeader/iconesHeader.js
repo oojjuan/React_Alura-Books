@@ -12,12 +12,12 @@ const HeaderIcones = styled.div
 `
   display: flex;
   align-items: center;
-  text-align: center;
 `
 
 const Icone = styled.li
 `
-  width: 50px;
+  width: 120px;
+  text-align: center;
 
   &:hover {
   cursor: pointer;
@@ -31,7 +31,7 @@ function IconesHeader() {
         <HeaderIcones>
           {icones.map( (icone) => (
             <Icone>
-              <img src={icone}/>
+              <img src={icone} alt={icone}/>
             </Icone>
           ))}
         </HeaderIcones>

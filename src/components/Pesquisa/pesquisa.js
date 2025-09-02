@@ -14,6 +14,7 @@ const PesquisaContainer = styled.div
     text-align: center;
     padding: 85px 0;
     height: auto;
+    min-height: 500px;
     width: 100%;
 `
 
@@ -76,17 +77,23 @@ function Pesquisa() {
                 onBlur={evento => {
                     //* Puxa o valor do elemento que foi acionado
                     const textoDigitado = evento.target.value
+                    
+                    //* Verifica se o campo de texto está vazio
+                    if (textoDigitado !== "") {
+                        //* Verifica, para cada livro, se a pesquisa do usuário é semelhante ao nome do livro
+                        const resultadoPesquisa = livros.filter( (livro) => livro.nome.includes(textoDigitado))
+                        
+                        setLivrosPesquisados(resultadoPesquisa)
+                    } else {
+                        setLivrosPesquisados([])
+                    }
 
-                    //* Verifica, para cada livro, se o livro selecionado é igual à pesquisa do usuário
-                    const resultadoPesquisa = livros.filter( (livro) => livro.nome.includes(textoDigitado))
-                
-                    setLivrosPesquisados(resultadoPesquisa)
                 }}
             />
             { livrosPesquisados.map( (livro) => (
                 <Resultado>
                     <p>{livro.nome}</p>
-                    <img src={livro.src}/>
+                    <img src={livro.src} alt={livro.nome}/>
                 </Resultado>
             )) }
         </PesquisaContainer>

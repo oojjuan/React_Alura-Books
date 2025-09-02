@@ -1,8 +1,7 @@
 //<> Imports
 
-import Header from './components/Header/header';
-import Pesquisa from './components/Pesquisa/pesquisa';
-import UltimosLancamentos from './components/UltimosLancamentos/ultimosLancamentos';
+import Pesquisa from '../components/Pesquisa/pesquisa';
+import UltimosLancamentos from '../components/UltimosLancamentos/ultimosLancamentos';
 
 import styled from 'styled-components';
 
@@ -10,7 +9,7 @@ import styled from 'styled-components';
 
 const AppContainer = styled.div
 `
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-image: linear-gradient(90deg, #002F52 35%, #326589);
   margin: 0;
@@ -18,14 +17,13 @@ const AppContainer = styled.div
 
 //<> Default function
 
-function App() {
+function Home() {
   return (
     <AppContainer>
-      <Header/>
       <Pesquisa />
       <UltimosLancamentos />
     </AppContainer>
   );
 }
 
-export default App;
+export default Home;

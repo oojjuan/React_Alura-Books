@@ -4,6 +4,7 @@ import Logo from '../Logo/logo.js'
 import OpcoesHeader from '../OpcoesHeader/opcoesHeader.js';
 import IconesHeader from '../IconesHeader/iconesHeader.js';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 //<> Styled components
 
@@ -11,7 +12,8 @@ const HeaderContainer = styled.header
 `
     background-color: #FFF;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    
 `
 
 //<> Default function
@@ -19,7 +21,9 @@ const HeaderContainer = styled.header
 function Header() {
     return (
         <HeaderContainer>
-            <Logo/>
+            <Link className='text-link' to='/'>
+                <Logo/>
+            </Link>
             <OpcoesHeader/>
             <IconesHeader/>
         </HeaderContainer>
