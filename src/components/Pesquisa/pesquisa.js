@@ -2,8 +2,10 @@
 
 import styled from "styled-components";
 import Input from "../Input";
-import { useState } from "react";
-import { livros } from './dadosPesquisa.js';
+import { useEffect, useState } from "react";
+import { getLivros } from "../../services/livros";
+import livroSRC from "../../imgs/livro.png";
+import { postFavorito } from "../../services/favoritos";
 
 //<> Styled components
 
@@ -67,6 +69,21 @@ const Resultado = styled.div
 
 function Pesquisa() {
     const [livrosPesquisados, setLivrosPesquisados] = useState([]);
+    const [livros, setLivros] = useState([]);
+
+    //@param [] >> Sempre quando este parâmetro for alterado, a função será executada
+    useEffect( () => {
+        fetchLivros()
+    }, [])
+
+    async function fetchLivros() {
+        const livrosAPI = await getLivros()
+        setLivros(livrosAPI)
+    }
+
+    async function insertFavorito(id) {
+        await postFavorito(id)
+    }
     
     return (
         <PesquisaContainer>
@@ -91,9 +108,9 @@ function Pesquisa() {
                 }}
             />
             { livrosPesquisados.map( (livro) => (
-                <Resultado>
+                <Resultado onClick={() => insertFavorito(livro.id)}>
                     <p>{livro.nome}</p>
-                    <img src={livro.src} alt={livro.nome}/>
+                    <img src={livroSRC} alt={livro.nome}/>
                 </Resultado>
             )) }
         </PesquisaContainer>

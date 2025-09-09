@@ -1,12 +1,12 @@
 //<> Imports
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import Home from './routes/Home';
 import Favoritos from './routes/Favoritos'
 import Header from './components/Header/header'
 import { createGlobalStyle } from 'styled-components';
-import { BrowserRouter, Routes, Route, } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 
 //<> Global Style
 
@@ -27,6 +27,18 @@ const GlobalStyle = createGlobalStyle
   }
 `
 
+//<> Redirect '/' to '/categorias'
+
+function RedirecionarParaCategorias() {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    navigate("/categorias", { replace: true });
+  }, [navigate]);
+
+  return null;
+}
+
 //<> Root
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -35,17 +47,17 @@ root.render(
     <GlobalStyle />
     <BrowserRouter>
       <Header/>
-      <Routes>
+      <Routes exact path="/">
+        ( //* Envia para a rota padrão )
+        <Route path='/' element={<RedirecionarParaCategorias/>}/>
+        
         ( //* Rota padrão )
-        <Route path='/' element={<Home />} />
+        <Route path='/categorias' element={<Home />} />
 
         ( //* Rota '/favoritos' )
         <Route path='/favoritos' element={<Favoritos />} />
         
-        <Route path='/estante' element={<p>bao</p>} />
-
-        <Route path='/favoritos' element={<p>xuxu beleza</p>} />
-
+        <Route path='/estante' element={<h1>Página não feita!</h1>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
